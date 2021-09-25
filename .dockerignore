@@ -1,0 +1,11 @@
+file:
+venv
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+backorder.py
+modules
+__pycache__
+README.md
+backorder.ipynb

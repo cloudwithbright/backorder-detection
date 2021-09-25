@@ -1,0 +1,4 @@
+uvicorn
+gunicorn
+sklearn
+fastapi[all]

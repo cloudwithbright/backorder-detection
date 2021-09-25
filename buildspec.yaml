@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_REGION: "us-east-1" #Aws region to where our ecs and container registory resides
+    IMAGE_URL: "116691393185.dkr.ecr.us-east-1.amazonaws.com/model" # URL from aws container registory
+
+phases:
+  pre_build:
+    commands:
+      - echo Authenticating into aws container registory
+      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+
+  build:
+    commands:
+      - echo Build and tag docker image
+      - docker image build -t model:latest .
+      - docker image tag model:latest $IMAGE_URL:latest
+
+  post_build:
+    commands:
+      - echo Push image to container registory
+      - docker image push $IMAGE_URL:latest
+      - printf '[{ "name":"model", "imageUri":"%s"}]' $IMAGE_URL:latest > imagedefinitions.json
+      # Change model = task definition name
+artifacts:
+  files: imagedefinitions.json
