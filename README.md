@@ -4,9 +4,6 @@ A backorder is an order for a good or service that cannot be filled at the curre
 **Problem definition**
 A machine learning model to predict if a product will be in backorder or not.
 
-### Architecture on Amazon web services
-![model-aws](https://user-images.githubusercontent.com/74520811/131646698-4d8b1bf6-f621-46ef-a96c-0a45ce11c32a.png)
-
 ### Scores
 * Accuracy score: 65
 * Precission score: 67
